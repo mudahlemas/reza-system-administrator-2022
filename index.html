@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Reza System Administrator Simulation</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Reza System Administrator Simulation</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#reza-sysadmin-2022-nomor-soal-4" class="nav-link">Reza Sysadmin 2022 | Nomor Soal 4</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="reza-sysadmin-2022-nomor-soal-4">Reza Sysadmin 2022 | Nomor Soal 4</h1>
+<ol>
+<li>
+<p>Untuk mengerjakan soal kita perlu meyiapkan akun Github dahulu, daftar di halaman https://github.com/signup sampai berhasil login di halaman pembuatan repository baru.
+<img alt="Screenshot" src="rsa/Screenshot_1.jpg" /></p>
+</li>
+<li>
+<p>Lanjut untuk menulis dokumentasi menggunakan Mkdocs perlu modul “pip” dan instalasi Python di komputer lokal, download dahulu di halaman https://www.python.org/downloads/ kemudian install sampai selesai. 
+<img alt="Screenshot" src="rsa/Screenshot_2.jpg" /></p>
+</li>
+<li>
+<p>Setelah instalasi Python selesai “pip” sudah include dalam instalasi ini lalu untuk memasikan versinya buka CMD dengan akses Administrator ketik command pip –version 
+<img alt="Screenshot" src="rsa/Screenshot_3.jpg" /></p>
+</li>
+<li>
+<p>Versi pip sudah diketahui tebaru menggunakan 22.0 lanjut melakukan instalasi mkdocs dengan command pip install mkdocs tunggu prosesnya sampai selesai
+<img alt="Screenshot" src="rsa/Screenshot_4.jpg" /></p>
+</li>
+<li>
+<p>Untuk menulis dokumentasi test ini menggunakan Markdown perlu membuat project dahulu dengan perintah “mkdocs new reza-sa” dan bila sudah pergi ke direktori instalasi dengan perintah “cd reza-sa” karena lokasi file mkdocs saya berada di C:\Users\Reza\reza-sa\
+<img alt="Screenshot" src="rsa/mkdocs1.jpg" />
+Lanjut eksekusi untuk menjalankan mkdocs server di local dengan perintah “mkdocs serve” agar dapat diakses melalui browser
+<img alt="Screenshot" src="rsa/mkdocs2.jpg" />
+Saat menulis panduan ini saya menggunakan aplikasi editor kode Visual Studio Code dengan tambahan plugin Markdown All in One agar memudahkan saat dokumentasi pekerjaan.
+<img alt="Screenshot" src="rsa/mkdocs3.jpg" /></p>
+</li>
+<li>
+<p>Akses ssh ke vm dengan tabel akses default Port ssh 1 ke 192.168.1.89:2234 menggunakan aplikasi ssh/putty dan login menggunakan user/pass yang disediakan.
+<img alt="Screenshot" src="rsa/Screenshot_5.jpg" /></p>
+</li>
+<li>
+<p>Selanjutnya perlu cek pada interface pertama dari dhcp ke ip static, cek dahulu status device dan koneksi yang ada di vm ini dengan perintah “ip a” , diketahui ada 1 koneksi terhubung via lan dengan -eth0- lalu saya mencatat bagian koneksi nomor 2 yaitu link/ether 0c:ca:7e:64:00:34 dalam notepad, sekali lagi lakukan perintah “uuidgen eth0” untuk generate user id yang diperlukan untuk seting ip static nantinya, 2 kotak merah dalam gambar digunakan untuk konfigurasi. 
+<img alt="Screenshot" src="rsa/Screenshot_6.jpg" /></p>
+</li>
+<li>
+<p>Lanjut edit file konfigurasi network yang terletak di /etc/sysconfig/network-scripts/ifcfg-eth0 menggunakan view, dengan command “sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0” klik tombol i untuk insert/merubah isi teksnya isikan sesuai konfigurasi soal jika sudah ketik perintah “wq!” untuk save editor.
+<img alt="Screenshot" src="rsa/Screenshot_7.jpg" /></p>
+</li>
+<li>
+<p>Lanjut verifikasi file ifcfg-eth0 yang tadi sudah di edit dengan perintah “cat /etc/sysconfig/network-scripts/ifcfg-eth0” untuk memastikan file sudah benar dan tersimpan di VM. 
+<img alt="Screenshot" src="rsa/Screenshot_8.jpg" /></p>
+</li>
+<li>
+<p>Lanjut melakukan restart service koneksi dengan perintah “systemctl restart network” masukan sandi user centos yang digunakan agar terverifikasi.
+<img alt="Screenshot" src="rsa/Screenshot_10.jpg" /></p>
+</li>
+<li>
+<p>Setelah melakukan langkah diatas koneksi ssh di putty akan terputus karena perubahan IP, lanjut kita login menggunakan port ssh2 192.168.1.89:2254 menggunakan putty kembali dan login menggunakan user centos untuk menyiapkan ssh authorized_keys.
+<img alt="Screenshot" src="rsa/Screenshot_11.jpg" /></p>
+</li>
+<li>
+<p>Setelah berhasil login biarkan saja dahulu, lanjut buka CMD lokal windows gunakan perintah “ssh-keygen -t rsa” untuk membuat ssh key, disini saya mengkosongkan passphrase dengan tekan Enter semua sampai prosesnya selesai.
+<img alt="Screenshot" src="rsa/Screenshot_12.jpg" /></p>
+</li>
+<li>
+<p>Lanjut kita akan instal sshkey di server kembali ke putty lagi di langkah 11, ketika saya membuat direktori .ssh ternyata sudah ada di home centor, lalu saya rubah saja owner saja ke 700. 
+<img alt="Screenshot" src="rsa/Screenshot_13.jpg" /></p>
+</li>
+<li>
+<p>Ternyata di VM ini untuk authorized keys sudah ada didalam folder .ssh maka tinggal edit filenya menggunakan vi dan masukan public key (isi dari id_rsa.pub) tadi dari direktori lokal (langkah 12) simpan kemudian pastikan file sudah benar dengan cek ulang perintah cat authorized_keys
+<img alt="Screenshot" src="rsa/Screenshot_14.jpg" /></p>
+</li>
+<li>
+<p>Lanjut ubah permision agar hanya dapat Read/Write saja dengan menggunakan perintah “chmod 600 authorized_keys” dan konfigurasi ssh keys sudah selesai. 
+<img alt="Screenshot" src="rsa/Screenshot_16.jpg" /></p>
+</li>
+<li>
+<p>Test kembali akses login SSH di lokal, disini karena windows maka menggunakan CMD dengan perintah ssh -p2254 centos@192.168.1.89 jika muncul notifikasi fingerprint ketik yes saja dan berhasil login tanpa perlu password melalui CMD.
+Saya menggunakan CMD agar menyingkat waktu dibandingkan putty perlu seting dan memasukan private key dahulu di Putty nya.
+<img alt="Screenshot" src="rsa/Screenshot_17.jpg" /></p>
+</li>
+<li>
+<p>Sebelum melakukan instalasi Nginx perlu memastikan konfigurasi IP Private 1 dengan perintah perintah berikut dari CLI hasil akhir sudah bisa ping ke google.com
+<img alt="Screenshot" src="rsa/Screenshot_18.jpg" /></p>
+</li>
+<li>
+<p>Selanjutnya akan melakukan instalasi Nginx Server di VM ini, buat dahulu file konfigurasi dengan perintah “sudo vi /etc/yum.repos.d/nginx.repo” dan isikan konfigurasi berikut dalam filenya:</p>
+</li>
+</ol>
+<pre><code class="language-java">[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/
+gpgcheck=0
+enabled=1
+</code></pre>
+<p><img alt="Screenshot" src="rsa/Screenshot_19.jpg" /></p>
+<ol>
+<li>
+<p>Lanjut melakukan instalasi nginx dengan menggunakan perintah “sudo yum install nginx" dan tunggu prosesnya sampai selesai.
+<img alt="Screenshot" src="rsa/Screenshot_20.jpg" /></p>
+</li>
+<li>
+<p>Jika ada notifikasi tekan tombol y saja sampai prosesnya selesai seperti ini, pastikan semua sudah complete.
+<img alt="Screenshot" src="rsa/Screenshot_21.jpg" /></p>
+</li>
+<li>
+<p>Lanjut akan menjalankan service nginx dengan perintah “service nginx start” lalu akan diminta sandi otentikasi masukan sandi user centos sampai complete.
+<img alt="Screenshot" src="rsa/Screenshot_22.jpg" /></p>
+</li>
+<li>
+<p>Jika sudah cek service nginx dengan perintah “service nginx status” pastikan sudah hijau running tandanya nginx sudah berjalan dengan baik. 
+<img alt="Screenshot" src="rsa/Screenshot_23.jpg" /></p>
+</li>
+<li>
+<p>Lanjut melakukan seting mod rewrite ke nginx webserver agar htaccess secara umum dapat digunakan karena teknisnya nginx berbeda dengan apache, maka edit file konfigurasi dengan perintah “sudo vi /etc/nginx/conf.d/default.conf” lalu rubah bagian yang diblok ke:</p>
+</li>
+</ol>
+<pre><code class="language-java">[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/
+gpgcheck=0
+enabled=1
+</code></pre>
+<p><img alt="Screenshot" src="img/image17.jpg" /></p>
+<ol>
+<li>
+<p>Menginstall versi php-fpm 7.3 dan 7.4 di webserver nginx-centos7 pertama membutuhkan epel repository, gunakan perintah “sudo yum install epel-release” sampai selesai prosesnya.
+<img alt="Screenshot" src="img/image25.jpg" /></p>
+</li>
+<li>
+<p>Proses selanjutnya melakukan instalasi remi repository dengan perintah “sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm” dan tunggu prosesnya sampai selesai.
+<img alt="Screenshot" src="img/image27.jpg" /></p>
+</li>
+<li>
+<p>Jika sudah selesai lanjut instalasi paket yum-utils dengan menggunakan perintah “sudo yum install yum-utils” dan tunggu proses sampai selesai.</p>
+</li>
+<li>Lanjut mengaktifkan konfigurasi versi php yang dibutuhkan yaitu 7.3, 7.4, dan 8.0 menggunakan perintah berikut:
+sudo yum-config-manager --enable remi-php73
+sudo yum-config-manager --enable remi-php74
+sudo yum-config-manager --enable remi-php80</li>
+<li>
+<p>Setelah semua proses diatas selesai lanjut instalasi ekstensi php yang dibutuhkan dengan perintah berikut:
+sudo yum -y install php php-fpm php-mysqlnd php-zip php-devel php-gd php-mcrypt php-mbstring php-curl php-xml php-pear php-bcmath php-json php-pdo php-pecl-apcu php-pecl-apcu-devel
+<img alt="Screenshot" src="img/image23.jpg" /></p>
+</li>
+<li>
+<p>Lanjut untuk proses konfigurasi php-fpm buka file /etc/php.ini lalu tambahkan baris cgi.fix_pathinfo=0
+<img alt="Screenshot" src="img/image12.jpg" /></p>
+</li>
+<li>
+<p>Lanjut buka file www.conf di direktori dengan perintah “sudo nano /etc/php-fpm.d/www.conf” lalu rubah bagian:</p>
+</li>
+</ol>
+<pre><code>user = centos
+group = centos
+listen.owner = centos
+listen.group = centos
+</code></pre>
+<p>Karena user saya pada VM ini menggunakan nama centos
+<img alt="Screenshot" src="img/image36.jpg" /></p>
+<ol>
+<li>Jika sudah selesai lanjut kita akan menjalankan proses php-fpm di server dan juga saat boot secara otomatis, gunakan perintah ini:</li>
+</ol>
+<pre><code>sudo systemctl start php-fpm
+sudo systemctl enable php-fpm
+</code></pre>
+<p>Jika sudah cek status service php-fpm dengan perintah ini “sudo systemctl status php-fpm”
+<img alt="Screenshot" src="img/image32.jpg" /></p>
+<ol>
+<li>
+<p>Seting IP interface kedua perlu menggunakan network manager, disini saya menggunakan nmtui dan pastikan sebelumnya sudah melakukan instalasi ntmui di VM ini. Ketik perintah nmtui untuk masuk e konfigurasi pilih Edit Connection.
+<img alt="Screenshot" src="img/image50.jpg" />
+Ketika sudah masuk pilih menu Add, profile name dan device saya isikan eth1 dan IP Private kedua 172.16.8.54 simpan jika sudah.
+<img alt="Screenshot" src="img/image51.jpg" /></p>
+</li>
+<li>
+<p>Lanjut saya mencoba konfigurasi file php info tambahan, setelah dicari direktori template website berada di /usr/share/nginx/html/ kemudian saya membuat file php info dengan mkdir folder baru php73/ dan mengisi script php info
+<img alt="Screenshot" src="img/image16.jpg" />
+Test akses ke web direktori utama /usr/share/nginx/html sudah bisa tampil diakses dengan http://192.168.1.89:854/ sudah dapat tampil berikut
+<img alt="Screenshot" src="img/image8.jpg" /></p>
+</li>
+</ol>
+<p>Saat melakukan test akses direktori phpinfo /php73 ternyata koneksi RTO hasilnya, pengecekan melalui curl muncul hasil seperti ini:</p>
+<pre><code>[idweb@remote ~]$ curl -I http://192.168.1.89:854/php73
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.23.1
+Date: Sat, 23 Jul 2022 14:20:30 GMT
+Content-Type: text/html
+Content-Length: 169
+Location: http://192.168.1.89/php73/
+Connection: keep-alive
+</code></pre>
+<p>Port akses otomatis ter’redirect ke non port 854 dengan eror 301, kemudian saya coba melakukan langkah selanjutnya dahulu untuk instalasi telnet-server.</p>
+<ol>
+<li>
+<p>Gunakan perintah “sudo yum install telnet-server telnet” 
+<img alt="Screenshot" src="img/image31.jpg" /></p>
+</li>
+<li>
+<p>Jika sudah lanjut instalasi firewalld agar dapat mengkonfigurasi dan membuka telnet port 23 agar dapat dilakukan akses secara menyeluruh. 
+Gunakan perintah “sudo yum install telnet-server telnet” tunggu prosesnya sampai selesai.
+Selanjutnya juga perlu instalasi firewall, gunakan perintah “sudo yum install firewalld” tunggu sampai selesai prosesnya. 
+Setelah instalasi selesai gunakan perintah ini untuk konfigurasi yang diperlukan.</p>
+</li>
+</ol>
+<pre><code>$ sudo systemctl start firewalld
+$ sudo systemctl enable firewalld
+$ sudo systemctl status firewalld
+</code></pre>
+<p>Jika sudah gunakan perintah berikut untuk konfigurasi firewall port 80 dan akses telnet:
+$ sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+$ sudo firewall-cmd --reload
+$ sudo firewall-cmd --add-service=telnet --zone=public
+<img alt="Screenshot" src="img/image6.jpg" /></p>
+<p>Test akses telnet menggunakan perintah “telnet 172.16.8.1 80” hasilnya sudah terhubung.
+<img alt="Screenshot" src="img/image55.jpg" /></p>
+<p>Install wget untuk mendownload file template menggunakan perintah “sudo yum install wget” tunggu proses selesai, jika sudah pastikan berada di direktori /usr/share/nginx/html/ kemudian lanjut ketik perintah “sudo wget http://172.16.8.1/web.tar.gz”
+<img alt="Screenshot" src="img/image56.jpg" /></p>
+<p>Lanjut instalasi phpmyadmin dengan perintah “sudo yum install phpmyadmin” tunggu sampai selesai prosesnya.
+<img alt="Screenshot" src="img/image57.jpg" /></p>
+<p>Buat konfigurasi file symlink dengan perintah “sudo ln -s /usr/share/phpMyAdmin /usr/share/nginx/html/phpmyadmin” agar file phpmyadmin dapat dijalankan.
+Symlink sudah dibuat lanjut restart php-fpm dengan perintah “sudo systemctl restart php-fpm”</p>
+<p>Disini saya mencoba mengakses kembali phpmyadmin namun hasilnya tetap tidak bisa karena kemungkinan konfigurasi php konfig di nginx ada yang tidak sesuai, sudah dicoba untuk mod rewrite ulang dengan script yang benar masih belum memberikan hasil.
+Semua service pada server terlihat jalan dengan baik tanpa kendala. </p>
+<p>Namun jika diakses dengan subdir lain contoh /phpmyadmin selalu menghasilkan RTP dan hasil dari Curl 301 redirect.</p>
+<pre><code>[idweb@remote ~]$ curl -I http://192.168.1.89:854/phpmyadmin
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.23.1
+Date: Sun, 24 Jul 2022 04:06:56 GMT
+Content-Type: text/html
+Content-Length: 169
+Location: http://192.168.1.89/phpmyadmin/
+Connection: keep-alive
+</code></pre>
+<p>Sampai saat ini saya mencoba mencari klue penyebabnya dan bertanya ke teman2 SA senior namun belum menemukan penyebab dan klue kendala berasal dari mana. </p>
+<p>Sekian hasil tes simulasi VM ini, terimakasih sudah memberi kesempatan untuk mencoba :) </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.3.1
+Build Date UTC : 2022-07-24 07:50:04.269626+00:00
+-->
